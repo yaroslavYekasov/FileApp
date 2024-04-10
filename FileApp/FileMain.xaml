@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FileApp.FileMain"
+             Title="FileMain">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <HorizontalStackLayout>
+                <Entry x:Name="fileNameEntry" Placeholder="Sisesta faili nimi" FontSize="Title" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Column="1" Text="Salvesta" Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            <Editor Grid.Row="1" x:Name="textEditor" FontSize="Large"/>
+            <VerticalStackLayout Grid.Row="2">
+                <Label Text="Failide loelu:" FontSize="Title"/>
+                <ListView x:Name="fileList" ItemSelected="fileList_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}">
+                                <TextCell.ContextActions>
+                                    <MenuItem x:Name="Delete" Text="Kustuta fail" IsDestructive="True" Clicked="Delete_Clicked"/>
+                                    <MenuItem x:Name="ToList" Text="Tekst loetu" IsDestructive="True" Clicked="ToList_Clicked"/>
+                                </TextCell.ContextActions>
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label Text="Faili sisu loendist:" FontSize="Title"/>
+                <ListView x:Name="listFailist">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

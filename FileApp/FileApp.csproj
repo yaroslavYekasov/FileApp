@@ -52,4 +52,10 @@
 	  <None Remove="Resources\Fonts\trebuc.ttf" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="FileMain.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
